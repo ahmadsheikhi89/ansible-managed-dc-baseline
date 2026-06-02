@@ -1,26 +1,18 @@
 ---
-- name: Audit selected Chrony source read-only
-  hosts: all
+- name: 72 Audit Chrony Selected Source Readonly
+  hosts: baseline_readonly_scope
   gather_facts: true
   become: true
   serial: 1
-  vars:
-    report_dir: "{{ playbook_dir }/../reports }"
   tasks:
-    - name: Execute read-only command
+
+    - name: Audit Chrony selected source
       ansible.builtin.shell: |
-        set -o pipefail
         chronyc sources -v || true
+chronyc tracking || true
       args:
         executable: /bin/bash
+      register: result_37535
       changed_when: false
       failed_when: false
-      register: audit_result
 
-    - name: Show read-only result
-      ansible.builtin.debug:
-        msg:
-          host: "{{ inventory_hostname }}"
-          rc: "{{ audit_result.rc }}"
-          stdout: "{{ audit_result.stdout | default('') }}"
-          stderr: "{{ audit_result.stderr | default('') }}"

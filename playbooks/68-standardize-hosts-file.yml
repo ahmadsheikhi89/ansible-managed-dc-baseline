@@ -1,19 +1,17 @@
 ---
-- name: Standardize required internal hosts entries
-  hosts: all
+- name: 68 Standardize Hosts File
+  hosts: baseline_readonly_scope
   gather_facts: true
   become: true
   serial: 1
   tasks:
-    - name: Ensure AtlasForge internal service entries exist
-      ansible.builtin.blockinfile:
-        path: /etc/hosts
-        marker: "# {mark} ATLASFORGE BASELINE MANAGED BLOCK"
-        block: |
-          10.44.30.31 registry.atlasforge.example
-          10.44.30.11 git.atlasforge.example
-          10.44.30.13 nexus.atlasforge.example
-          10.44.10.10 ntp01.atlasforge.example
-        owner: root
-        group: root
-        mode: '0644'
+
+    - name: Preview required hosts file entries
+      ansible.builtin.shell: |
+        echo "Example only. Standardization must be tested with --check --diff before write."
+      args:
+        executable: /bin/bash
+      register: result_44616
+      changed_when: false
+      failed_when: false
+

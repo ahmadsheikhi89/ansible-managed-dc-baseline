@@ -1,11 +1,11 @@
 [atlasforge-rocky-baseos]
 name=AtlasForge Rocky BaseOS
-baseurl=https://nexus.atlasforge.example/repository/rocky-9-baseos/
+baseurl=https://nexus.atlasforge.example/repository/rocky-baseos/$releasever/$basearch/os/
 enabled=1
-gpgcheck=0
+gpgcheck=1
 
 [atlasforge-rocky-appstream]
 name=AtlasForge Rocky AppStream
-baseurl=https://nexus.atlasforge.example/repository/rocky-9-appstream/
+baseurl=https://nexus.atlasforge.example/repository/rocky-appstream/$releasever/$basearch/os/
 enabled=1
-gpgcheck=0
+gpgcheck=1

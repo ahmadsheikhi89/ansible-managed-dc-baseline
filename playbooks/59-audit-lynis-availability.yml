@@ -1,26 +1,17 @@
 ---
-- name: Audit Lynis availability
-  hosts: all
+- name: 59 Audit Lynis Availability
+  hosts: baseline_readonly_scope
   gather_facts: true
   become: true
   serial: 1
-  vars:
-    report_dir: "{{ playbook_dir }/../reports }"
   tasks:
-    - name: Execute read-only command
+
+    - name: Audit Lynis availability
       ansible.builtin.shell: |
-        set -o pipefail
-        command -v lynis && lynis show version || true
+        command -v lynis || true
       args:
         executable: /bin/bash
+      register: result_87420
       changed_when: false
       failed_when: false
-      register: audit_result
 
-    - name: Show read-only result
-      ansible.builtin.debug:
-        msg:
-          host: "{{ inventory_hostname }}"
-          rc: "{{ audit_result.rc }}"
-          stdout: "{{ audit_result.stdout | default('') }}"
-          stderr: "{{ audit_result.stderr | default('') }}"

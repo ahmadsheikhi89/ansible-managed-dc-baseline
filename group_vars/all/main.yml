@@ -1,5 +1,6 @@
 ---
 project_name: ansible-managed-dc-baseline
+project_version: v1.1.0
 company_name: AtlasForge Bank
 business_unit: Digital Infrastructure Engineering
 environment_name: On-Prem / Air-Gapped Datacenter Lab
@@ -10,6 +11,7 @@ atlasforge:
   registry: registry.atlasforge.example
   git: git.atlasforge.example
   nexus: nexus.atlasforge.example
+  apt_mirror: apt-mirror.atlasforge.example
   ntp_source: ntp01.atlasforge.example
   management_cidr: 10.44.10.0/24
   application_cidr: 10.44.20.0/24
@@ -17,25 +19,16 @@ atlasforge:
   observability_cidr: 10.44.40.0/24
 
 baseline_controls:
-  hosts_file:
-    required_entries:
-      - { ip: "10.44.30.31", name: "registry.atlasforge.example" }
-      - { ip: "10.44.30.11", name: "git.atlasforge.example" }
-      - { ip: "10.44.30.13", name: "nexus.atlasforge.example" }
-      - { ip: "10.44.10.10", name: "ntp01.atlasforge.example" }
+  required_hosts_entries:
+    - { ip: "10.44.30.63", name: "nexus.atlasforge.example" }
+    - { ip: "10.44.30.61", name: "git.atlasforge.example" }
+    - { ip: "10.44.30.64", name: "registry.atlasforge.example" }
+    - { ip: "10.44.10.10", name: "ntp01.atlasforge.example" }
   approved_repo_domains:
     - atlasforge.example
-    - registry.atlasforge.example
     - nexus.atlasforge.example
-  approved_time_sources:
-    - ntp01.atlasforge.example
-  exception_firewalld_hosts:
-    - af-gitlab-01
-    - af-gitlab-runner-01
-
-report_paths:
-  final_csv: reports/final/99-managed-dc-baseline-readonly.csv
-  lynis_csv: reports/61-lynis-rocky-summary.csv
-  exceptions_csv: reports/exceptions/74-firewalld-operational-exceptions.csv
-  firewall_csv: reports/firewall/73-gitlab-firewalld-readonly-report.csv
-  repo_cleanup_csv: reports/repo-cleanup/69-external-repo-refs-report.csv
+    - apt-mirror.atlasforge.example
+    - registry.atlasforge.example
+  expected_time_source: ntp01.atlasforge.example
+  expected_docker_state: active
+  expected_rocky_selinux_state: Enforcing

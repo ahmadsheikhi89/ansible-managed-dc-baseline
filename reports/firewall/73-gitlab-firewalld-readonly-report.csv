@@ -1,3 +1,23 @@
-inventory_hostname|ansible_host|service_name|docker|firewalld|required_action|control_status|notes
-af-gitlab-01|10.44.30.11|gitlab-server|active|inactive|Design SOC-approved Docker/firewalld policy|ACCEPTED_EXCEPTION|Synthetic GitLab firewalld evidence
-af-gitlab-runner-01|10.44.30.12|gitlab-runner|active|inactive|Design SOC-approved Docker/firewalld policy|ACCEPTED_EXCEPTION|Synthetic Runner firewalld evidence
+inventory_hostname|ansible_host|tier|service_name|firewalld_state|docker_state|control_status|evidence_command|notes
+af-api-gw-in-01|10.44.10.11|API Gateway|api-gateway-inbound|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-api-gw-in-02|10.44.10.12|API Gateway|api-gateway-inbound|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-api-gw-out-01|10.44.10.13|API Gateway|api-gateway-outbound|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-api-gw-out-02|10.44.10.14|API Gateway|api-gateway-outbound|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-web-prd-01|10.44.10.21|Web Tier|web-frontend-prd|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-web-prd-02|10.44.10.22|Web Tier|web-frontend-prd|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-web-legacy-01|10.44.10.23|Web Tier|web-frontend-legacy|N/A_UBUNTU_EXCEPTION|active|UBUNTU_EXCEPTION|systemctl is-active firewalld docker|Ubuntu exception tracked outside Rocky firewalld baseline.
+af-api-core-prd-01|10.44.10.31|Application API|core-api-prd|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-api-core-prd-02|10.44.10.32|Application API|core-api-prd|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-api-payment-prd-01|10.44.10.33|Application API|payment-api-prd|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-api-identity-prd-01|10.44.10.34|Application API|identity-api-prd|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-api-notification-legacy-01|10.44.10.35|Application API|notification-api-legacy|N/A_UBUNTU_EXCEPTION|active|UBUNTU_EXCEPTION|systemctl is-active firewalld docker|Ubuntu exception tracked outside Rocky firewalld baseline.
+af-db-proxy-01|10.44.10.41|DB Access|database-access-proxy|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-db-proxy-02|10.44.10.42|DB Access|database-access-proxy|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-rmq-01|10.44.10.51|Messaging Cache|rabbitmq|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-rmq-02|10.44.10.52|Messaging Cache|rabbitmq|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-redis-01|10.44.10.53|Messaging Cache|redis-cache|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-gitlab-01|10.44.10.61|DevOps Platform|gitlab|inactive|active|ACCEPTED_EXCEPTION|systemctl is-active firewalld docker|Exception documented in operational exception register.
+af-gitlab-runner-01|10.44.10.62|DevOps Platform|gitlab-runner|inactive|active|ACCEPTED_EXCEPTION|systemctl is-active firewalld docker|Exception documented in operational exception register.
+af-nexus-01|10.44.10.63|DevOps Platform|nexus|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-monitor-01|10.44.10.71|Observability|monitoring-stack|active|active|OK|systemctl is-active firewalld docker|firewalld active and controlled by baseline policy.
+af-log-legacy-01|10.44.10.72|Observability|legacy-logging|N/A_UBUNTU_EXCEPTION|active|UBUNTU_EXCEPTION|systemctl is-active firewalld docker|Ubuntu exception tracked outside Rocky firewalld baseline.

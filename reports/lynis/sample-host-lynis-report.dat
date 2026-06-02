@@ -1,8 +1,9 @@
-# Synthetic Lynis report data for public training only
-hostid=af-api-gw-out-01
+# Synthetic Lynis-like evidence sample
+host=af-api-core-prd-01
 os=Rocky Linux 9.4
 hardening_index=82
+tests_done=271
 warnings=1
 suggestions=26
-lynis_version=3.1.0-demo
-report_generation=synthetic
+status=OK
+note=Public-safe synthetic evidence only. This is not a real Lynis report.

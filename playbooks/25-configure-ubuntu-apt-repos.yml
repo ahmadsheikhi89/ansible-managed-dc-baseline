@@ -1,26 +1,17 @@
 ---
-- name: Configure Ubuntu internal APT repositories
-  hosts: ubuntu_exception
+- name: 25 Configure Ubuntu Apt Repos
+  hosts: baseline_readonly_scope
   gather_facts: true
   become: true
   serial: 1
   tasks:
-    - name: Render internal AtlasForge Ubuntu source list
-      ansible.builtin.template:
-        src: ../templates/apt.sources.list.d/atlasforge-ubuntu.list.j2
-        dest: /etc/apt/sources.list.d/atlasforge-ubuntu.list
-        owner: root
-        group: root
-        mode: '0644'
 
-    - name: Render internal AtlasForge Docker source list
-      ansible.builtin.template:
-        src: ../templates/apt.sources.list.d/atlasforge-docker-ce.list.j2
-        dest: /etc/apt/sources.list.d/atlasforge-docker-ce.list
-        owner: root
-        group: root
-        mode: '0644'
+    - name: Dry-run Ubuntu APT repository policy
+      ansible.builtin.shell: |
+        echo "Example only. Run with --check --diff before changing production."
+      args:
+        executable: /bin/bash
+      register: result_40469
+      changed_when: false
+      failed_when: false
 
-    - name: Show next safe validation command
-      ansible.builtin.debug:
-        msg: "Run apt-cache policy after peer review. This playbook does not execute apt update."

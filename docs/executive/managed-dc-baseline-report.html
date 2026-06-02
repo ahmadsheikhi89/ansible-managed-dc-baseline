@@ -1,45 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AtlasForge Bank - Managed DC Baseline Report</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 32px; color: #111827; background: #ffffff; }
-    header { border-bottom: 3px solid #111827; padding-bottom: 16px; margin-bottom: 24px; }
-    h1 { margin: 0 0 8px 0; font-size: 28px; }
-    h2 { margin-top: 32px; border-bottom: 1px solid #D1D5DB; padding-bottom: 6px; }
-    .subtitle { color: #4B5563; }
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(160px, 1fr)); gap: 14px; }
-    .card { border: 1px solid #111827; padding: 16px; background: #F9FAFB; }
-    .metric { font-size: 28px; font-weight: 700; }
-    .label { color: #374151; margin-top: 6px; }
-    table { border-collapse: collapse; width: 100%; font-size: 13px; margin-top: 12px; }
-    th { background: #111827; color: #ffffff; text-align: left; }
-    th, td { border: 1px solid #D1D5DB; padding: 8px; vertical-align: top; }
-    .charts { display: grid; grid-template-columns: repeat(1, 1fr); gap: 18px; }
-    .charts img { border: 1px solid #D1D5DB; max-width: 100%; }
-    .notice { border: 1px solid #111827; padding: 12px; background: #FEF3C7; }
-    @media print { body { margin: 18px; } .grid { grid-template-columns: repeat(3, 1fr); } }
-  </style>
+<meta charset="utf-8">
+<title>AtlasForge Bank - Managed DC Baseline Report</title>
+<style>
+body{font-family:Arial,sans-serif;margin:40px;color:#111827;background:#ffffff}
+h1{border-bottom:3px solid #111827;padding-bottom:10px}
+.notice{border:1px solid #111827;padding:12px;background:#f9fafb}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.card{border:1px solid #111827;padding:14px;background:#ffffff}
+.card b{display:block;font-size:13px;color:#374151}
+.card span{font-size:28px;font-weight:bold}
+table{border-collapse:collapse;width:100%;margin-top:16px}
+th,td{border:1px solid #111827;padding:8px;text-align:left;vertical-align:top}
+th{background:#111827;color:#ffffff}
+img{max-width:100%;border:1px solid #111827;margin:10px 0}
+</style>
 </head>
 <body>
-<header>
-  <h1>AtlasForge Bank - Managed DC Baseline Report</h1>
-  <div class="subtitle">Digital Infrastructure Engineering - On-Prem / Air-Gapped Datacenter Lab</div>
-</header>
-<section class="notice">This report contains synthetic data for training and demonstration only. It contains no real infrastructure data, secrets, IPs, domains, or production evidence.</section>
+<h1>AtlasForge Bank - Managed Datacenter Baseline Report</h1>
+<p class="notice">This repository contains synthetic data for training and demonstration purposes only. It does not contain real infrastructure data, secrets, IPs, domains, or production evidence.</p>
 <h2>Executive KPIs</h2>
-<div class="grid"><div class="card"><div class="metric">22</div><div class="label">Total Hosts</div></div><div class="card"><div class="metric">22</div><div class="label">Final OK</div></div><div class="card"><div class="metric">19</div><div class="label">Rocky Linux</div></div><div class="card"><div class="metric">3</div><div class="label">Ubuntu Exception</div></div><div class="card"><div class="metric">0</div><div class="label">External Repo Refs</div></div><div class="card"><div class="metric">81.2</div><div class="label">Average Lynis Index</div></div></div>
+<div class="grid"><div class="card"><b>Total hosts</b><span>22</span></div><div class="card"><b>Final OK</b><span>22</span></div><div class="card"><b>Rocky Linux</b><span>19</span></div><div class="card"><b>Ubuntu exceptions</b><span>3</span></div><div class="card"><b>Docker active</b><span>22</span></div><div class="card"><b>External repo refs</b><span>0</span></div></div>
 <h2>Charts</h2>
-<div class="charts">
-  <img src="charts/os-distribution.svg" alt="OS Distribution" />
-  <img src="charts/firewall-control.svg" alt="Firewall Control" />
-  <img src="charts/control-readiness.svg" alt="Control Readiness" />
-</div>
+<img src="charts/os-distribution.svg" alt="OS Distribution">
+<img src="charts/firewall-control.svg" alt="Firewall Control">
+<img src="charts/tier-distribution.svg" alt="Tier Distribution">
 <h2>Operational Exceptions</h2>
-<table><thead><tr><th>inventory_hostname</th><th>ansible_host</th><th>service_name</th><th>exception_type</th><th>owner_team</th><th>risk_level</th><th>approval_status</th><th>reason</th><th>review_cycle</th><th>notes</th></tr></thead><tbody><tr><td>af-gitlab-01</td><td>10.44.30.11</td><td>gitlab-server</td><td>FIREWALLD_DOCKER_DESIGN</td><td>Digital Infrastructure Engineering</td><td>Medium</td><td>Accepted for demo baseline</td><td>Docker-based GitLab and GitLab Runner require SOC-approved Docker/firewalld design before enabling host firewalld.</td><td>Quarterly</td><td>Synthetic public-safe exception record</td></tr><tr><td>af-gitlab-runner-01</td><td>10.44.30.12</td><td>gitlab-runner</td><td>FIREWALLD_DOCKER_DESIGN</td><td>Digital Infrastructure Engineering</td><td>Medium</td><td>Accepted for demo baseline</td><td>Docker-based GitLab and GitLab Runner require SOC-approved Docker/firewalld design before enabling host firewalld.</td><td>Quarterly</td><td>Synthetic public-safe exception record</td></tr></tbody></table>
-<h2>Sample Final Baseline Rows</h2>
-<table><thead><tr><th>inventory_hostname</th><th>ansible_host</th><th>service_name</th><th>real_hostname</th><th>os</th><th>version</th><th>scope</th><th>hub_hosts_entry</th><th>git_hosts_entry</th><th>package_manager</th><th>external_repo_refs</th><th>time_service</th><th>time_sync</th><th>chrony_source</th><th>selinux</th><th>firewalld</th><th>firewall_control</th><th>docker</th><th>final_status</th><th>notes</th></tr></thead><tbody><tr><td>af-api-gw-out-01</td><td>10.44.20.11</td><td>api-gateway-outbound</td><td>af-api-gw-out-01.atlasforge.example</td><td>Rocky</td><td>9.4</td><td>Application</td><td>yes</td><td>yes</td><td>dnf</td><td>0</td><td>chronyd</td><td>yes</td><td>ntp01.atlasforge.example</td><td>Enforcing</td><td>active</td><td>OK</td><td>active</td><td>OK</td><td>All baseline controls passed in synthetic evidence set</td></tr><tr><td>af-api-gw-out-02</td><td>10.44.20.12</td><td>api-gateway-outbound</td><td>af-api-gw-out-02.atlasforge.example</td><td>Rocky</td><td>9.4</td><td>Application</td><td>yes</td><td>yes</td><td>dnf</td><td>0</td><td>chronyd</td><td>yes</td><td>ntp01.atlasforge.example</td><td>Enforcing</td><td>active</td><td>OK</td><td>active</td><td>OK</td><td>All baseline controls passed in synthetic evidence set</td></tr><tr><td>af-api-gw-out-03</td><td>10.44.20.13</td><td>api-gateway-outbound</td><td>af-api-gw-out-03.atlasforge.example</td><td>Rocky</td><td>9.4</td><td>Application</td><td>yes</td><td>yes</td><td>dnf</td><td>0</td><td>chronyd</td><td>yes</td><td>ntp01.atlasforge.example</td><td>Enforcing</td><td>active</td><td>OK</td><td>active</td><td>OK</td><td>All baseline controls passed in synthetic evidence set</td></tr><tr><td>af-api-gw-in-01</td><td>10.44.20.21</td><td>api-gateway-inbound</td><td>af-api-gw-in-01.atlasforge.example</td><td>Rocky</td><td>9.4</td><td>Application</td><td>yes</td><td>yes</td><td>dnf</td><td>0</td><td>chronyd</td><td>yes</td><td>ntp01.atlasforge.example</td><td>Enforcing</td><td>active</td><td>OK</td><td>active</td><td>OK</td><td>All baseline controls passed in synthetic evidence set</td></tr><tr><td>af-api-gw-in-02</td><td>10.44.20.22</td><td>api-gateway-inbound</td><td>af-api-gw-in-02.atlasforge.example</td><td>Rocky</td><td>9.4</td><td>Application</td><td>yes</td><td>yes</td><td>dnf</td><td>0</td><td>chronyd</td><td>yes</td><td>ntp01.atlasforge.example</td><td>Enforcing</td><td>active</td><td>OK</td><td>active</td><td>OK</td><td>All baseline controls passed in synthetic evidence set</td></tr><tr><td>af-api-gw-in-03</td><td>10.44.20.23</td><td>api-gateway-inbound</td><td>af-api-gw-in-03.atlasforge.example</td><td>Rocky</td><td>9.4</td><td>Application</td><td>yes</td><td>yes</td><td>dnf</td><td>0</td><td>chronyd</td><td>yes</td><td>ntp01.atlasforge.example</td><td>Enforcing</td><td>active</td><td>OK</td><td>active</td><td>OK</td><td>All baseline controls passed in synthetic evidence set</td></tr><tr><td>af-app-dev-01</td><td>10.44.20.31</td><td>application-dev</td><td>af-app-dev-01.atlasforge.example</td><td>Rocky</td><td>9.4</td><td>Application</td><td>yes</td><td>yes</td><td>dnf</td><td>0</td><td>chronyd</td><td>yes</td><td>ntp01.atlasforge.example</td><td>Enforcing</td><td>active</td><td>OK</td><td>active</td><td>OK</td><td>All baseline controls passed in synthetic evidence set</td></tr><tr><td>af-app-stg-01</td><td>10.44.20.32</td><td>application-staging</td><td>af-app-stg-01.atlasforge.example</td><td>Rocky</td><td>9.4</td><td>Application</td><td>yes</td><td>yes</td><td>dnf</td><td>0</td><td>chronyd</td><td>yes</td><td>ntp01.atlasforge.example</td><td>Enforcing</td><td>active</td><td>OK</td><td>active</td><td>OK</td><td>All baseline controls passed in synthetic evidence set</td></tr><tr><td>af-app-prd-01</td><td>10.44.20.33</td><td>application-production</td><td>af-app-prd-01.atlasforge.example</td><td>Rocky</td><td>9.4</td><td>Application</td><td>yes</td><td>yes</td><td>dnf</td><td>0</td><td>chronyd</td><td>yes</td><td>ntp01.atlasforge.example</td><td>Enforcing</td><td>active</td><td>OK</td><td>active</td><td>OK</td><td>All baseline controls passed in synthetic evidence set</td></tr><tr><td>af-gitlab-01</td><td>10.44.30.11</td><td>gitlab-server</td><td>af-gitlab-01.atlasforge.example</td><td>Rocky</td><td>9.4</td><td>Platform</td><td>yes</td><td>yes</td><td>dnf</td><td>0</td><td>chronyd</td><td>yes</td><td>ntp01.atlasforge.example</td><td>Enforcing</td><td>inactive</td><td>ACCEPTED_EXCEPTION</td><td>active</td><td>OK</td><td>SOC-approved operational exception documented for Docker/firewalld design review</td></tr></tbody></table>
-</body>
-</html>
+<table><thead><tr><th>Host</th><th>Exception Type</th><th>Reason</th></tr></thead><tbody><tr><td>af-gitlab-01</td><td>FIREWALL_CONTROL_ACCEPTED_EXCEPTION</td><td>Docker-based GitLab service requires SOC-approved Docker/firewalld design before enabling host firewalld.</td></tr><tr><td>af-gitlab-runner-01</td><td>FIREWALL_CONTROL_ACCEPTED_EXCEPTION</td><td>GitLab Runner Docker executor uses dynamic container networking and requires approved firewall model.</td></tr><tr><td>af-api-notification-legacy-01</td><td>UBUNTU_OS_SCOPE_EXCEPTION</td><td>Legacy Ubuntu host included as migration exception in synthetic baseline.</td></tr><tr><td>af-log-legacy-01</td><td>UBUNTU_OS_SCOPE_EXCEPTION</td><td>Legacy Ubuntu host included as migration exception in synthetic baseline.</td></tr><tr><td>af-web-legacy-01</td><td>UBUNTU_OS_SCOPE_EXCEPTION</td><td>Legacy Ubuntu host included as migration exception in synthetic baseline.</td></tr></tbody></table>
+<h2>Evidence Pack</h2>
+<ul><li>Final baseline CSV</li><li>CTO Excel workbook</li><li>Lynis-like summary</li><li>Firewall exception register</li></ul>
+</body></html>

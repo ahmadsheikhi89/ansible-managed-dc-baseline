@@ -1,26 +1,19 @@
 ---
-- name: Run basic CIS-style preflight read-only checks
-  hosts: all
+- name: 67 Cis Preflight Basic Readonly Report
+  hosts: baseline_readonly_scope
   gather_facts: true
   become: true
   serial: 1
-  vars:
-    report_dir: "{{ playbook_dir }/../reports }"
   tasks:
-    - name: Execute read-only command
+
+    - name: Run CIS-like read-only preflight
       ansible.builtin.shell: |
-        set -o pipefail
-        printf 'hostname='; hostname; printf 'selinux='; getenforce 2>/dev/null || true; printf 'docker='; systemctl is-active docker 2>/dev/null || true; printf 'firewalld='; systemctl is-active firewalld 2>/dev/null || true
+        umask
+findmnt /tmp || true
+sysctl kernel.randomize_va_space || true
       args:
         executable: /bin/bash
+      register: result_56579
       changed_when: false
       failed_when: false
-      register: audit_result
 
-    - name: Show read-only result
-      ansible.builtin.debug:
-        msg:
-          host: "{{ inventory_hostname }}"
-          rc: "{{ audit_result.rc }}"
-          stdout: "{{ audit_result.stdout | default('') }}"
-          stderr: "{{ audit_result.stderr | default('') }}"

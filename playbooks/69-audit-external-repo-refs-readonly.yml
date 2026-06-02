@@ -1,37 +1,17 @@
 ---
-- name: Audit external repository references
-  hosts: all
+- name: 69 Audit External Repo Refs Readonly
+  hosts: baseline_readonly_scope
   gather_facts: true
   become: true
   serial: 1
-  vars:
-    report_file: "{{ playbook_dir }}/../reports/repo-cleanup/69-external-repo-refs-report.csv"
-  pre_tasks:
-    - name: Create repo cleanup report header
-      ansible.builtin.copy:
-        dest: "{{ report_file }}"
-        content: "inventory_hostname|ansible_host|os|external_repo_refs|status|notes
-"
-        mode: '0644'
-      delegate_to: localhost
-      run_once: true
-      become: false
   tasks:
-    - name: Search for non-AtlasForge repository references
+
+    - name: Audit external repo references
       ansible.builtin.shell: |
-        set -o pipefail
-        grep -RIE "https?://|mirrorlist|metalink" /etc/yum.repos.d /etc/apt 2>/dev/null | grep -v "atlasforge.example" || true
+        grep -RIE "mirrorlist=|metalink=|download.docker.com|archive.ubuntu.com|security.ubuntu.com" /etc/yum.repos.d /etc/apt 2>/dev/null || true
       args:
         executable: /bin/bash
+      register: result_25453
       changed_when: false
       failed_when: false
-      register: external_repo_refs
 
-    - name: Append repo reference audit row
-      ansible.builtin.lineinfile:
-        path: "{{ report_file }}"
-        line: "{{ inventory_hostname }}|{{ ansible_host | default('unknown') }}|{{ ansible_distribution }}|{{ external_repo_refs.stdout_lines | length }}|{{ 'OK' if external_repo_refs.stdout_lines | length == 0 else 'REVIEW' }}|Read-only external repository reference scan"
-        insertafter: EOF
-      delegate_to: localhost
-      become: false
-      changed_when: false

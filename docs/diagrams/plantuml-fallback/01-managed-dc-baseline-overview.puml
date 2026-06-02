@@ -1,25 +1,32 @@
 @startuml
 skinparam monochrome true
 skinparam shadowing false
-title Managed DC Baseline Overview
-rectangle "Ansible Managed DC Baseline" as A
-rectangle "22 Managed Hosts" as B
-rectangle "19 Rocky Linux Hosts" as C
-rectangle "3 Ubuntu Exception Hosts" as D
-rectangle "Read-only Control Evidence" as E
-rectangle "CTO Deliverables" as L
+rectangle "Ansible Control Node" as A
+rectangle "Management Network
+10.44.10.0/24" as B
+rectangle "API Gateway" as C
+rectangle "Web Tier" as D
+rectangle "Application API" as E
+rectangle "DB Access" as F
+rectangle "Messaging and Cache" as G
+rectangle "DevOps Platform" as H
+rectangle "Observability" as I
+rectangle "Synthetic Evidence Reports" as J
+rectangle "CTO Excel and HTML Pack" as K
 A --> B
 B --> C
 B --> D
-A --> E
-A --> L
-E --> "Hosts File Validation"
-E --> "Repository Hygiene"
-E --> "Chrony/NTP Sync"
-E --> "Docker Runtime"
-E --> "SELinux on Rocky"
-E --> "Firewall Control"
-L --> "Excel Workbook"
-L --> "HTML Report"
-L --> "Markdown Diagrams"
+B --> E
+B --> F
+B --> G
+B --> H
+B --> I
+C --> J
+D --> J
+E --> J
+F --> J
+G --> J
+H --> J
+I --> J
+J --> K
 @enduml

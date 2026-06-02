@@ -1,19 +1,21 @@
 # Final Audit Workflow
 
 ```mermaid
-sequenceDiagram
-    participant Operator
-    participant Ansible
-    participant Hosts as Managed Hosts
-    participant Reports
-    participant Executive as CTO Deliverables
+flowchart LR
+    A["Inventory"] --> B["Read-only Ansible Audits"]
+    B --> C["Host Facts"]
+    B --> D["Repo Policy"]
+    B --> E["Time Sync"]
+    B --> F["Docker Runtime"]
+    B --> G["SELinux and Firewall"]
+    C --> H["Final Baseline CSV"]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+    H --> I["Excel Dashboard"]
+    H --> J["HTML Executive Report"]
 
-    Operator->>Ansible: Run read-only baseline playbooks
-    Ansible->>Hosts: Gather facts and execute safe checks
-    Hosts-->>Ansible: Return baseline evidence
-    Ansible->>Reports: Write pipe-delimited CSV files
-    Operator->>Reports: Generate demo data when needed
-    Reports->>Executive: Build Excel workbook
-    Reports->>Executive: Build HTML and Markdown report
-    Executive-->>Operator: Review final baseline pack
+    classDef bw fill:#ffffff,stroke:#000000,color:#000000,stroke-width:1.5px;
+    class A,B,C,D,E,F,G,H,I,J bw;
 ```

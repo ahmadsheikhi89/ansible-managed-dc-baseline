@@ -1,40 +1,59 @@
 ---
 all:
   children:
-    api_gateway:
+    enterprise_runtime:
       children:
-        api_gateway_outbound:
-          hosts:
-            af-api-gw-out-01:
-            af-api-gw-out-02:
-            af-api-gw-out-03:
-        api_gateway_inbound:
-          hosts:
+        api_gateway_tier:
+        web_tier:
+        application_api_tier:
+        db_access_tier:
+        messaging_cache_tier:
+    platform_runtime:
+      children:
+        devops_platform_tier:
+        observability_tier:
+    api_gateway_tier:
+      hosts:
             af-api-gw-in-01:
             af-api-gw-in-02:
-            af-api-gw-in-03:
-    application_services:
+            af-api-gw-out-01:
+            af-api-gw-out-02:
+    web_tier:
       hosts:
-        af-app-dev-01:
-        af-app-stg-01:
-        af-app-prd-01:
-        af-pwa-01:
-        af-payment-dev-01:
-        af-payment-stg-01:
-        af-payment-prd-01:
-        af-vehicle-01:
-        af-services-01:
-        af-api-common-01:
-    cicd_services:
+            af-web-prd-01:
+            af-web-prd-02:
+            af-web-legacy-01:
+    application_api_tier:
+      hosts:
+            af-api-core-prd-01:
+            af-api-core-prd-02:
+            af-api-payment-prd-01:
+            af-api-identity-prd-01:
+            af-api-notification-legacy-01:
+    db_access_tier:
+      hosts:
+            af-db-proxy-01:
+            af-db-proxy-02:
+    messaging_cache_tier:
+      hosts:
+            af-rmq-01:
+            af-rmq-02:
+            af-redis-01:
+    devops_platform_tier:
+      hosts:
+            af-gitlab-01:
+            af-gitlab-runner-01:
+            af-nexus-01:
+    observability_tier:
+      hosts:
+            af-monitor-01:
+            af-log-legacy-01:
+    firewalld_operational_exception:
       hosts:
         af-gitlab-01:
         af-gitlab-runner-01:
-        af-nexus-01:
-        af-hub-01:
-    exception_hosts:
+    ubuntu_operational_exception:
       hosts:
-        af-push-01:
-        af-vehicle-01:
-        af-sentry-01:
-        af-gitlab-01:
-        af-gitlab-runner-01:
+        af-web-legacy-01:
+        af-api-notification-legacy-01:
+        af-log-legacy-01:

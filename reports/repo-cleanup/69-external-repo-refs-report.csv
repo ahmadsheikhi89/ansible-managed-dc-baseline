@@ -1,23 +1,23 @@
-inventory_hostname|ansible_host|os|package_manager|external_repo_refs|status|notes
-af-api-gw-out-01|10.44.20.11|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-api-gw-out-02|10.44.20.12|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-api-gw-out-03|10.44.20.13|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-api-gw-in-01|10.44.20.21|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-api-gw-in-02|10.44.20.22|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-api-gw-in-03|10.44.20.23|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-app-dev-01|10.44.20.31|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-app-stg-01|10.44.20.32|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-app-prd-01|10.44.20.33|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-gitlab-01|10.44.30.11|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-gitlab-runner-01|10.44.30.12|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-nexus-01|10.44.30.13|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-push-01|10.44.30.21|Ubuntu|apt|0|OK|Only AtlasForge internal repository references found
-af-pwa-01|10.44.20.41|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-payment-dev-01|10.44.20.51|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-payment-stg-01|10.44.20.52|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-payment-prd-01|10.44.20.53|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-vehicle-01|10.44.20.61|Ubuntu|apt|0|OK|Only AtlasForge internal repository references found
-af-services-01|10.44.20.62|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-sentry-01|10.44.40.11|Ubuntu|apt|0|OK|Only AtlasForge internal repository references found
-af-hub-01|10.44.30.31|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
-af-api-common-01|10.44.20.71|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+inventory_hostname|ansible_host|tier|service_name|package_manager|external_repo_refs|approved_internal_repo|status|notes
+af-api-gw-in-01|10.44.10.11|API Gateway|api-gateway-inbound|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-api-gw-in-02|10.44.10.12|API Gateway|api-gateway-inbound|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-api-gw-out-01|10.44.10.13|API Gateway|api-gateway-outbound|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-api-gw-out-02|10.44.10.14|API Gateway|api-gateway-outbound|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-web-prd-01|10.44.10.21|Web Tier|web-frontend-prd|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-web-prd-02|10.44.10.22|Web Tier|web-frontend-prd|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-web-legacy-01|10.44.10.23|Web Tier|web-frontend-legacy|apt|0|apt-mirror.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-api-core-prd-01|10.44.10.31|Application API|core-api-prd|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-api-core-prd-02|10.44.10.32|Application API|core-api-prd|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-api-payment-prd-01|10.44.10.33|Application API|payment-api-prd|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-api-identity-prd-01|10.44.10.34|Application API|identity-api-prd|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-api-notification-legacy-01|10.44.10.35|Application API|notification-api-legacy|apt|0|apt-mirror.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-db-proxy-01|10.44.10.41|DB Access|database-access-proxy|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-db-proxy-02|10.44.10.42|DB Access|database-access-proxy|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-rmq-01|10.44.10.51|Messaging Cache|rabbitmq|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-rmq-02|10.44.10.52|Messaging Cache|rabbitmq|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-redis-01|10.44.10.53|Messaging Cache|redis-cache|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-gitlab-01|10.44.10.61|DevOps Platform|gitlab|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-gitlab-runner-01|10.44.10.62|DevOps Platform|gitlab-runner|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-nexus-01|10.44.10.63|DevOps Platform|nexus|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-monitor-01|10.44.10.71|Observability|monitoring-stack|dnf|0|nexus.atlasforge.example|OK|No external repository references found in synthetic evidence.
+af-log-legacy-01|10.44.10.72|Observability|legacy-logging|apt|0|apt-mirror.atlasforge.example|OK|No external repository references found in synthetic evidence.

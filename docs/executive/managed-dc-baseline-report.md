@@ -1,50 +1,30 @@
-# AtlasForge Bank - Managed DC Baseline Executive Report
+# AtlasForge Bank - Managed Datacenter Baseline Report
 
-This executive report is generated from deterministic synthetic evidence for public training only.
+> Synthetic public-safe executive report. No real infrastructure data is included.
 
-## Executive summary
+## Executive KPIs
 
-| KPI | Value |
-|---|---:|
-| Total managed hosts | 22 |
-| Final OK hosts | 22 |
-| Rocky Linux hosts | 19 |
-| Ubuntu exception hosts | 3 |
-| Docker active hosts | 22 |
-| Time synchronized hosts | 22 |
-| External repository references | 0 |
-| Average Rocky hardening index | 81.2 |
+- **Total hosts:** 22
+- **Final OK:** 22
+- **Rocky Linux:** 19
+- **Ubuntu exceptions:** 3
+- **Docker active:** 22
+- **External repo refs:** 0
 
-## Firewall control status
+## Scope
 
-| status | count |
-| --- | --- |
-| OK | 17 |
-| ACCEPTED_EXCEPTION | 2 |
-| UBUNTU_EXCEPTION | 3 |
+This demo models Web, API Gateway, Application API, DB Access, Messaging/Cache, DevOps Platform, and Observability tiers.
 
-## Operational exceptions
+## Exceptions
 
-| inventory_hostname | ansible_host | service_name | exception_type | owner_team | risk_level | approval_status | reason | review_cycle | notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| af-gitlab-01 | 10.44.30.11 | gitlab-server | FIREWALLD_DOCKER_DESIGN | Digital Infrastructure Engineering | Medium | Accepted for demo baseline | Docker-based GitLab and GitLab Runner require SOC-approved Docker/firewalld design before enabling host firewalld. | Quarterly | Synthetic public-safe exception record |
-| af-gitlab-runner-01 | 10.44.30.12 | gitlab-runner | FIREWALLD_DOCKER_DESIGN | Digital Infrastructure Engineering | Medium | Accepted for demo baseline | Docker-based GitLab and GitLab Runner require SOC-approved Docker/firewalld design before enabling host firewalld. | Quarterly | Synthetic public-safe exception record |
+- **af-gitlab-01** — FIREWALL_CONTROL_ACCEPTED_EXCEPTION — Docker-based GitLab service requires SOC-approved Docker/firewalld design before enabling host firewalld.
+- **af-gitlab-runner-01** — FIREWALL_CONTROL_ACCEPTED_EXCEPTION — GitLab Runner Docker executor uses dynamic container networking and requires approved firewall model.
+- **af-api-notification-legacy-01** — UBUNTU_OS_SCOPE_EXCEPTION — Legacy Ubuntu host included as migration exception in synthetic baseline.
+- **af-log-legacy-01** — UBUNTU_OS_SCOPE_EXCEPTION — Legacy Ubuntu host included as migration exception in synthetic baseline.
+- **af-web-legacy-01** — UBUNTU_OS_SCOPE_EXCEPTION — Legacy Ubuntu host included as migration exception in synthetic baseline.
 
-## Sample final baseline rows
+## Evidence Pack
 
-| inventory_hostname | ansible_host | service_name | real_hostname | os | version | scope | hub_hosts_entry | git_hosts_entry | package_manager | external_repo_refs | time_service | time_sync | chrony_source | selinux | firewalld | firewall_control | docker | final_status | notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| af-api-gw-out-01 | 10.44.20.11 | api-gateway-outbound | af-api-gw-out-01.atlasforge.example | Rocky | 9.4 | Application | yes | yes | dnf | 0 | chronyd | yes | ntp01.atlasforge.example | Enforcing | active | OK | active | OK | All baseline controls passed in synthetic evidence set |
-| af-api-gw-out-02 | 10.44.20.12 | api-gateway-outbound | af-api-gw-out-02.atlasforge.example | Rocky | 9.4 | Application | yes | yes | dnf | 0 | chronyd | yes | ntp01.atlasforge.example | Enforcing | active | OK | active | OK | All baseline controls passed in synthetic evidence set |
-| af-api-gw-out-03 | 10.44.20.13 | api-gateway-outbound | af-api-gw-out-03.atlasforge.example | Rocky | 9.4 | Application | yes | yes | dnf | 0 | chronyd | yes | ntp01.atlasforge.example | Enforcing | active | OK | active | OK | All baseline controls passed in synthetic evidence set |
-| af-api-gw-in-01 | 10.44.20.21 | api-gateway-inbound | af-api-gw-in-01.atlasforge.example | Rocky | 9.4 | Application | yes | yes | dnf | 0 | chronyd | yes | ntp01.atlasforge.example | Enforcing | active | OK | active | OK | All baseline controls passed in synthetic evidence set |
-| af-api-gw-in-02 | 10.44.20.22 | api-gateway-inbound | af-api-gw-in-02.atlasforge.example | Rocky | 9.4 | Application | yes | yes | dnf | 0 | chronyd | yes | ntp01.atlasforge.example | Enforcing | active | OK | active | OK | All baseline controls passed in synthetic evidence set |
-| af-api-gw-in-03 | 10.44.20.23 | api-gateway-inbound | af-api-gw-in-03.atlasforge.example | Rocky | 9.4 | Application | yes | yes | dnf | 0 | chronyd | yes | ntp01.atlasforge.example | Enforcing | active | OK | active | OK | All baseline controls passed in synthetic evidence set |
-| af-app-dev-01 | 10.44.20.31 | application-dev | af-app-dev-01.atlasforge.example | Rocky | 9.4 | Application | yes | yes | dnf | 0 | chronyd | yes | ntp01.atlasforge.example | Enforcing | active | OK | active | OK | All baseline controls passed in synthetic evidence set |
-| af-app-stg-01 | 10.44.20.32 | application-staging | af-app-stg-01.atlasforge.example | Rocky | 9.4 | Application | yes | yes | dnf | 0 | chronyd | yes | ntp01.atlasforge.example | Enforcing | active | OK | active | OK | All baseline controls passed in synthetic evidence set |
-
-## Charts
-
-- `docs/executive/charts/os-distribution.svg`
-- `docs/executive/charts/firewall-control.svg`
-- `docs/executive/charts/control-readiness.svg`
+- Final baseline CSV: `reports/final/99-managed-dc-baseline-readonly.csv`
+- Excel dashboard: `reports/final/managed-dc-baseline-cto.xlsx`
+- Charts: `docs/executive/charts/*.svg`

@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="194" viewBox="0 0 720 194">
-  <rect x="0" y="0" width="720" height="194" fill="#ffffff"/>
-  <text x="20" y="30" font-size="18" font-weight="700">Firewall Control</text>
-  <text x="20" y="76" font-size="13">OK</text><rect x="220" y="60" width="420" height="22" fill="#111827"/><text x="650" y="76" font-size="13">17</text><text x="20" y="114" font-size="13">ACCEPTED_EXCEPTION</text><rect x="220" y="98" width="49" height="22" fill="#111827"/><text x="279" y="114" font-size="13">2</text><text x="20" y="152" font-size="13">UBUNTU_EXCEPTION</text><rect x="220" y="136" width="74" height="22" fill="#111827"/><text x="304" y="152" font-size="13">3</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="320" viewBox="0 0 760 320">
+  <rect x="0" y="0" width="760" height="320" fill="#ffffff"/>
+  <text x="30" y="35" font-size="20" font-family="Arial" font-weight="bold">Firewall Control</text>
+  <line x1="60" y1="250" x2="720" y2="250" stroke="#000000"/>
+  <rect x="80" y="70" width="70" height="180" fill="#ffffff" stroke="#000000"/><text x="115.0" y="275" text-anchor="middle" font-size="12">OK</text><text x="115.0" y="62" text-anchor="middle" font-size="12">17</text><rect x="178" y="219" width="70" height="31" fill="#ffffff" stroke="#000000"/><text x="213.0" y="275" text-anchor="middle" font-size="12">UBUNTU_EXCEPTION</text><text x="213.0" y="211" text-anchor="middle" font-size="12">3</text><rect x="276" y="229" width="70" height="21" fill="#ffffff" stroke="#000000"/><text x="311.0" y="275" text-anchor="middle" font-size="12">ACCEPTED_EXCEPTION</text><text x="311.0" y="221" text-anchor="middle" font-size="12">2</text>
 </svg>

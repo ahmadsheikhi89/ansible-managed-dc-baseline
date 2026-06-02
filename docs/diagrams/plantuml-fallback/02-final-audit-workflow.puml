@@ -1,18 +1,12 @@
 @startuml
 skinparam monochrome true
 skinparam shadowing false
-title Final Audit Workflow
-actor Operator
-participant Ansible
-participant "Managed Hosts" as Hosts
-participant Reports
-participant "CTO Deliverables" as Executive
-Operator -> Ansible: Run read-only baseline playbooks
-Ansible -> Hosts: Gather facts and execute safe checks
-Hosts --> Ansible: Return baseline evidence
-Ansible -> Reports: Write pipe-delimited CSV files
-Operator -> Reports: Generate demo data when needed
-Reports -> Executive: Build Excel workbook
-Reports -> Executive: Build HTML and Markdown report
-Executive --> Operator: Review final baseline pack
+start
+:Load inventory;
+:Run read-only Ansible audits;
+:Collect repo, time, runtime, SELinux and firewall evidence;
+:Build final baseline CSV;
+:Generate CTO Excel workbook;
+:Generate executive HTML report;
+stop
 @enduml

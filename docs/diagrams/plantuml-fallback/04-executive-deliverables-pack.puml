@@ -1,14 +1,12 @@
 @startuml
 skinparam monochrome true
 skinparam shadowing false
-title Executive Deliverables Pack
 rectangle "CSV Evidence" as A
-rectangle "Excel CTO Workbook" as B
-rectangle "HTML Executive Report" as C
+rectangle "CTO Workbook" as B
+rectangle "Executive HTML" as C
 rectangle "Markdown Summary" as D
 rectangle "SVG Charts" as E
 rectangle "Management Review" as F
-rectangle "Baseline Accepted" as G
 A --> B
 A --> C
 A --> D
@@ -17,5 +15,4 @@ B --> F
 C --> F
 D --> F
 E --> F
-F --> G
 @enduml

@@ -5,30 +5,30 @@ all:
       children:
         rocky_linux_scope:
           hosts:
-        af-api-gw-out-01:
-        af-api-gw-out-02:
-        af-api-gw-out-03:
-        af-api-gw-in-01:
-        af-api-gw-in-02:
-        af-api-gw-in-03:
-        af-app-dev-01:
-        af-app-stg-01:
-        af-app-prd-01:
-        af-gitlab-01:
-        af-gitlab-runner-01:
-        af-nexus-01:
-        af-pwa-01:
-        af-payment-dev-01:
-        af-payment-stg-01:
-        af-payment-prd-01:
-        af-services-01:
-        af-hub-01:
-        af-api-common-01:
+            af-api-gw-in-01:
+            af-api-gw-in-02:
+            af-api-gw-out-01:
+            af-api-gw-out-02:
+            af-web-prd-01:
+            af-web-prd-02:
+            af-api-core-prd-01:
+            af-api-core-prd-02:
+            af-api-payment-prd-01:
+            af-api-identity-prd-01:
+            af-db-proxy-01:
+            af-db-proxy-02:
+            af-rmq-01:
+            af-rmq-02:
+            af-redis-01:
+            af-gitlab-01:
+            af-gitlab-runner-01:
+            af-nexus-01:
+            af-monitor-01:
         ubuntu_exception_scope:
           hosts:
-        af-push-01:
-        af-vehicle-01:
-        af-sentry-01:
+            af-web-legacy-01:
+            af-api-notification-legacy-01:
+            af-log-legacy-01:
     baseline_readonly_scope:
       children:
         rocky_linux_scope:

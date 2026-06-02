@@ -1,26 +1,17 @@
 ---
-- name: Audit Rocky DNF repository configuration
-  hosts: all
+- name: 22 Audit Dnf Repos
+  hosts: baseline_readonly_scope
   gather_facts: true
   become: true
   serial: 1
-  vars:
-    report_dir: "{{ playbook_dir }/../reports }"
   tasks:
-    - name: Execute read-only command
+
+    - name: Audit DNF repository configuration
       ansible.builtin.shell: |
-        set -o pipefail
-        dnf repolist --enabled || true
+        if command -v dnf >/dev/null 2>&1; then dnf repolist --enabled; fi
       args:
         executable: /bin/bash
+      register: result_21791
       changed_when: false
       failed_when: false
-      register: audit_result
 
-    - name: Show read-only result
-      ansible.builtin.debug:
-        msg:
-          host: "{{ inventory_hostname }}"
-          rc: "{{ audit_result.rc }}"
-          stdout: "{{ audit_result.stdout | default('') }}"
-          stderr: "{{ audit_result.stderr | default('') }}"

@@ -1,26 +1,17 @@
 ---
-- name: Audit Rocky EPEL basic availability
-  hosts: all
+- name: 57 Audit Rocky Epel Basic
+  hosts: baseline_readonly_scope
   gather_facts: true
   become: true
   serial: 1
-  vars:
-    report_dir: "{{ playbook_dir }/../reports }"
   tasks:
-    - name: Execute read-only command
+
+    - name: Audit EPEL availability
       ansible.builtin.shell: |
-        set -o pipefail
-        rpm -q epel-release || true; dnf repolist --enabled | grep -i epel || true
+        if command -v dnf >/dev/null 2>&1; then dnf repolist --enabled | grep -i epel || true; fi
       args:
         executable: /bin/bash
+      register: result_21863
       changed_when: false
       failed_when: false
-      register: audit_result
 
-    - name: Show read-only result
-      ansible.builtin.debug:
-        msg:
-          host: "{{ inventory_hostname }}"
-          rc: "{{ audit_result.rc }}"
-          stdout: "{{ audit_result.stdout | default('') }}"
-          stderr: "{{ audit_result.stderr | default('') }}"

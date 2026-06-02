@@ -1,5 +1,5 @@
 [atlasforge-docker-ce-stable]
 name=AtlasForge Docker CE Stable Mirror
-baseurl=https://nexus.atlasforge.example/repository/docker-ce-rocky-9/
+baseurl=https://nexus.atlasforge.example/repository/docker-ce/linux/centos/$releasever/$basearch/stable
 enabled=1
-gpgcheck=0
+gpgcheck=1

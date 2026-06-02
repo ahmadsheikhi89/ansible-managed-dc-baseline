@@ -1,20 +1,10 @@
-# Runbook 04 - Safe Cleanup and Archive
+# Safe Cleanup and Archive
 
-## Goal
-
-Move intermediate evidence into a dated archive without committing private or temporary files.
-
-## Commands
+Archive generated evidence before cleanup.
 
 ```bash
-archive_dir="archive/$(date +%Y%m%d)-baseline-run"
-mkdir -p "${archive_dir}"
-cp -a reports/final reports/firewall reports/repo-cleanup reports/exceptions "${archive_dir}/"
-find "${archive_dir}" -type f -name '*.tmp' -delete
+mkdir -p archive/$(date +%Y%m%d)
+cp -a reports archive/$(date +%Y%m%d)/reports-snapshot
 ```
 
-## Safety checks
-
-```bash
-grep -RInE 'password|secret|token|PRIVATE KEY|BEGIN RSA|BEGIN OPENSSH' "${archive_dir}" || true
-```
+Never archive private keys, tokens, credentials, or raw production evidence.

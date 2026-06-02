@@ -1,15 +1,8 @@
-Synthetic baseline evidence was generated and reviewed for the AtlasForge Bank managed datacenter demo scope.
+Baseline evidence package has been generated and reviewed for the synthetic AtlasForge datacenter model.
 
-Summary:
-- 22 managed hosts checked.
-- 19 Rocky Linux hosts passed SELinux enforcing baseline.
-- 3 Ubuntu hosts documented as exception scope.
-- Docker runtime active on all hosts.
-- Time synchronization validated against ntp01.atlasforge.example.
-- External repository references are zero.
-- GitLab and GitLab Runner firewalld exceptions are documented for SOC design review.
+Scope includes Web, API Gateway, Application API, DB Access, Messaging/Cache, DevOps Platform, and Observability tiers. All hosts are final OK in the demo dataset. GitLab and GitLab Runner firewall exceptions are documented and tracked separately.
 
-Evidence package:
-- Final CSV: reports/final/99-managed-dc-baseline-readonly.csv
-- CTO Excel: reports/final/managed-dc-baseline-cto.xlsx
-- HTML report: docs/executive/managed-dc-baseline-report.html
+Evidence files:
+- reports/final/99-managed-dc-baseline-readonly.csv
+- reports/final/managed-dc-baseline-cto.xlsx
+- docs/executive/managed-dc-baseline-report.html

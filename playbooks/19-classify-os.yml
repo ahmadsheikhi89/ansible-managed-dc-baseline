@@ -1,22 +1,17 @@
 ---
-- name: Classify managed operating systems
-  hosts: all
+- name: 19 Classify Os
+  hosts: baseline_readonly_scope
   gather_facts: true
   become: true
   serial: 1
   tasks:
-    - name: Classify host operating system
-      ansible.builtin.set_fact:
-        baseline_os_class: >-
-          {{ 'rocky_managed' if ansible_distribution == 'Rocky' else
-             'ubuntu_exception' if ansible_distribution == 'Ubuntu' else
-             'unsupported_linux' }}
 
-    - name: Print OS classification
-      ansible.builtin.debug:
-        msg:
-          inventory_hostname: "{{ inventory_hostname }}"
-          ansible_host: "{{ ansible_host | default('unknown') }}"
-          distribution: "{{ ansible_distribution }}"
-          version: "{{ ansible_distribution_version }}"
-          baseline_os_class: "{{ baseline_os_class }}"
+    - name: Classify OS family
+      ansible.builtin.shell: |
+        cat /etc/os-release || true
+      args:
+        executable: /bin/bash
+      register: result_48621
+      changed_when: false
+      failed_when: false
+

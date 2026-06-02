@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="156" viewBox="0 0 720 156">
-  <rect x="0" y="0" width="720" height="156" fill="#ffffff"/>
-  <text x="20" y="30" font-size="18" font-weight="700">OS Distribution</text>
-  <text x="20" y="76" font-size="13">Rocky</text><rect x="220" y="60" width="420" height="22" fill="#111827"/><text x="650" y="76" font-size="13">19</text><text x="20" y="114" font-size="13">Ubuntu</text><rect x="220" y="98" width="66" height="22" fill="#111827"/><text x="296" y="114" font-size="13">3</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="320" viewBox="0 0 760 320">
+  <rect x="0" y="0" width="760" height="320" fill="#ffffff"/>
+  <text x="30" y="35" font-size="20" font-family="Arial" font-weight="bold">OS Distribution</text>
+  <line x1="60" y1="250" x2="720" y2="250" stroke="#000000"/>
+  <rect x="80" y="70" width="70" height="180" fill="#ffffff" stroke="#000000"/><text x="115.0" y="275" text-anchor="middle" font-size="12">Rocky Linux</text><text x="115.0" y="62" text-anchor="middle" font-size="12">19</text><rect x="178" y="222" width="70" height="28" fill="#ffffff" stroke="#000000"/><text x="213.0" y="275" text-anchor="middle" font-size="12">Ubuntu</text><text x="213.0" y="214" text-anchor="middle" font-size="12">3</text>
 </svg>

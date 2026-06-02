@@ -1,22 +1,24 @@
-# Managed DC Baseline Overview
+# Managed Datacenter Baseline Overview
 
 ```mermaid
 flowchart TB
-    A["Ansible Managed DC Baseline"] --> B["22 Managed Hosts"]
-    B --> C["19 Rocky Linux Hosts"]
-    B --> D["3 Ubuntu Exception Hosts"]
-    A --> E["Read-only Control Evidence"]
-    E --> F["Hosts File Validation"]
-    E --> G["Repository Hygiene"]
-    E --> H["Chrony/NTP Sync"]
-    E --> I["Docker Runtime"]
-    E --> J["SELinux on Rocky"]
-    E --> K["Firewall Control"]
-    A --> L["CTO Deliverables"]
-    L --> M["Excel Workbook"]
-    L --> N["HTML Report"]
-    L --> O["Markdown Diagrams"]
+    A["Ansible Control Node"] --> B["Management Network 10.44.10.0/24"]
+    B --> C["API Gateway Tier"]
+    B --> D["Web Tier"]
+    B --> E["Application API Tier"]
+    B --> F["DB Access Tier"]
+    B --> G["Messaging and Cache"]
+    B --> H["DevOps Platform"]
+    B --> I["Observability"]
+    C --> J["Synthetic Evidence Reports"]
+    D --> J
+    E --> J
+    F --> J
+    G --> J
+    H --> J
+    I --> J
+    J --> K["CTO Excel and HTML Pack"]
 
     classDef bw fill:#ffffff,stroke:#000000,color:#000000,stroke-width:1.5px;
-    class A,B,C,D,E,F,G,H,I,J,K,L,M,N,O bw;
+    class A,B,C,D,E,F,G,H,I,J,K bw;
 ```

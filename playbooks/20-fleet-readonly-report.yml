@@ -1,27 +1,19 @@
 ---
-- name: Build fleet read-only report
-  hosts: all
+- name: 20 Fleet Readonly Report
+  hosts: baseline_readonly_scope
   gather_facts: true
   become: true
   serial: 1
-  vars:
-    report_file: "{{ playbook_dir }}/../reports/20-fleet-readonly-report.csv"
-  pre_tasks:
-    - name: Create report header on localhost
-      ansible.builtin.copy:
-        dest: "{{ report_file }}"
-        content: "inventory_hostname|ansible_host|distribution|version|kernel|architecture
-"
-        mode: '0644'
-      delegate_to: localhost
-      run_once: true
-      become: false
   tasks:
-    - name: Append host facts to fleet report
-      ansible.builtin.lineinfile:
-        path: "{{ report_file }}"
-        line: "{{ inventory_hostname }}|{{ ansible_host | default('unknown') }}|{{ ansible_distribution }}|{{ ansible_distribution_version }}|{{ ansible_kernel }}|{{ ansible_architecture }}"
-        insertafter: EOF
-      delegate_to: localhost
-      become: false
+
+    - name: Collect identity and runtime facts
+      ansible.builtin.shell: |
+        hostnamectl || true
+ip -brief address || true
+df -hT || true
+      args:
+        executable: /bin/bash
+      register: result_84073
       changed_when: false
+      failed_when: false
+

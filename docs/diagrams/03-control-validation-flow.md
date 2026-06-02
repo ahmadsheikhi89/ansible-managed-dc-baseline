@@ -4,12 +4,11 @@
 stateDiagram-v2
     [*] --> InventoryLoaded
     InventoryLoaded --> OSClassified
-    OSClassified --> HostsFileChecked
-    HostsFileChecked --> RepoRefsChecked
-    RepoRefsChecked --> TimeSyncChecked
-    TimeSyncChecked --> RuntimeChecked
-    RuntimeChecked --> SecurityControlsChecked
-    SecurityControlsChecked --> ExceptionsDocumented
-    ExceptionsDocumented --> FinalBaselineOK
-    FinalBaselineOK --> [*]
+    OSClassified --> RepoValidated
+    RepoValidated --> TimeValidated
+    TimeValidated --> RuntimeValidated
+    RuntimeValidated --> SecurityControlsValidated
+    SecurityControlsValidated --> ExceptionsReviewed
+    ExceptionsReviewed --> FinalStatusOK
+    FinalStatusOK --> [*]
 ```
