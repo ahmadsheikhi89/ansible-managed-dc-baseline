@@ -2,82 +2,67 @@
 
 Production-style public demo repository for **Ansible Managed Datacenter Baseline Automation**.
 
-This repository demonstrates how infrastructure, DevOps, SRE, security operations, and platform engineering teams can build a reusable Ansible baseline framework for Linux fleet auditing, service-group inventory modeling, evidence collection, operational exception tracking, and executive reporting.
+This repository shows how to build a reusable Ansible baseline framework for Linux fleet auditing, service-based inventory modeling, read-only evidence collection, operational exception tracking, and executive reporting.
 
-The repository is intentionally built with **fully synthetic data** so it can be used safely for public training, internal workshops, GitHub learning, and baseline automation design.
+The project uses **fully synthetic data** and is safe for public GitHub, training, workshops, and internal DevOps documentation.
 
 > **Public-data disclaimer**
-> This repository contains synthetic data for training and demonstration purposes only.
-> It does not contain real infrastructure data, secrets, IPs, domains, hostnames, tickets, or production evidence.
+> This repository contains synthetic demo data only.
+> It does not contain real infrastructure data, real IP addresses, real domains, secrets, tickets, usernames, or production evidence.
 
 ---
 
-## Repository Purpose
+## What This Repository Solves
 
-This project provides a public-safe pattern for:
+Enterprise infrastructure teams usually need a repeatable way to answer questions like:
 
-* Managing a datacenter inventory with service-based Ansible groups
-* Separating business runtime services from shared platform services
-* Running read-only Linux baseline audits
-* Validating repository configuration
-* Validating `/etc/hosts`
-* Validating time synchronization
-* Validating Docker runtime state
-* Validating SELinux state on Rocky Linux
-* Tracking Ubuntu operational exceptions
-* Tracking firewall operational exceptions
-* Collecting Lynis/CIS-like evidence
-* Generating CTO-ready Excel and HTML reports
-* Archiving intermediate evidence safely
-* Preparing a reusable internal baseline automation model
+* Which Linux servers are inside managed scope?
+* Which systems are standard Rocky Linux nodes?
+* Which systems are approved Ubuntu or firewall exceptions?
+* Are repository configurations clean?
+* Is time synchronization healthy?
+* Is Docker active where expected?
+* Is SELinux visible in baseline reports?
+* Are operational exceptions documented?
+* Can we generate manager-ready Excel and HTML reports?
+
+This repository provides a practical baseline pattern for those workflows.
 
 ---
 
-## Synthetic Organization Context
+## Synthetic Environment
 
-| Field               | Value                               |
+| Item                | Value                               |
 | ------------------- | ----------------------------------- |
 | Company             | AtlasForge Bank                     |
 | Business Unit       | Digital Infrastructure Engineering  |
 | Environment         | On-Prem / Air-Gapped Datacenter Lab |
 | Domain              | atlasforge.example                  |
 | Registry            | registry.atlasforge.example         |
-| Git                 | git.atlasforge.example              |
+| Git Server          | git.atlasforge.example              |
 | Artifact Repository | nexus.atlasforge.example            |
 | NTP Source          | ntp01.atlasforge.example            |
 
----
-
-## Synthetic Network Model
-
-| CIDR          | Purpose                                                  |
-| ------------- | -------------------------------------------------------- |
-| 10.44.10.0/24 | Management and Ansible access                            |
-| 10.44.20.0/24 | Web, API Gateway, Application API, and DB access runtime |
-| 10.44.30.0/24 | Platform services, message broker, and cache             |
-| 10.44.40.0/24 | Observability and logging                                |
-
-All IP addresses, domains, hostnames, and service names in this repository are fictional.
+All names, domains, IP addresses, hostnames, and report values are fictional.
 
 ---
 
-## Inventory Scope
+## Synthetic Scope
 
 | Metric                         | Value |
 | ------------------------------ | ----: |
 | Total managed hosts            |    22 |
 | Rocky Linux managed hosts      |    19 |
 | Ubuntu exception hosts         |     3 |
-| Final OK                       |    22 |
 | Docker active                  |    22 |
-| Time sync yes                  |    22 |
+| Time sync healthy              |    22 |
 | External repository references |     0 |
 
 ---
 
 ## Service Group Model
 
-The repository uses service-based inventory groups instead of generic host lists.
+The inventory is organized by **service responsibility**, not only by operating system or hostname.
 
 ```text
 AtlasForge Bank - Synthetic Managed Datacenter
@@ -117,6 +102,88 @@ ubuntu_operational_exception
 
 ---
 
+## Visual Architecture
+
+### Service-Based Inventory Architecture
+
+```mermaid
+flowchart TD
+    A[Ansible Control Node] --> B[Inventory Files]
+
+    B --> C[Business Runtime Services]
+    B --> D[Shared Platform Services]
+    B --> E[Operational Exceptions]
+
+    C --> C1[Web Services]
+    C --> C2[API Gateway Services]
+    C --> C3[Application API Services]
+    C --> C4[Database Access Services]
+    C --> C5[Message Broker Services]
+    C --> C6[Cache Services]
+
+    D --> D1[DevOps CI Services]
+    D --> D2[Artifact Repository Services]
+    D --> D3[Observability Services]
+
+    E --> E1[Ubuntu Exceptions]
+    E --> E2[Firewall Exceptions]
+
+    C1 --> H1[Web Frontend Nodes]
+    C2 --> H2[Inbound and Outbound Gateway Nodes]
+    C3 --> H3[Core, Payment, Identity, Notification APIs]
+    C4 --> H4[Database Proxy Nodes]
+    C5 --> H5[RabbitMQ Nodes]
+    C6 --> H6[Redis Nodes]
+    D1 --> H7[GitLab and Runner]
+    D2 --> H8[Nexus Repository]
+    D3 --> H9[Prometheus, Grafana, Logging]
+```
+
+### Real Inventory Adoption Workflow
+
+```mermaid
+flowchart LR
+    A[Clone Public Repository] --> B[Create Private Internal Copy]
+    B --> C[Backup Synthetic Inventory]
+    C --> D[Replace hosts.yml]
+    D --> E[Replace Service Groups]
+    E --> F[Replace OS Scope]
+    F --> G[Replace group_vars]
+    G --> H[Validate Inventory Graph]
+    H --> I[Test One Host]
+    I --> J[Test One Service Group]
+    J --> K[Run Read-Only Baseline]
+    K --> L[Generate Excel and HTML Reports]
+```
+
+### Baseline Reporting Pipeline
+
+```mermaid
+flowchart TD
+    A[Managed Linux Hosts] --> B[Read-Only Ansible Playbooks]
+
+    B --> C[Raw Evidence Reports]
+    C --> D[Final Baseline CSV]
+    C --> E[Exception Register]
+    C --> F[Repository and Time Sync Evidence]
+    C --> G[Lynis and CIS-Like Summary]
+
+    D --> H[CTO Excel Workbook]
+    E --> H
+    F --> H
+    G --> H
+
+    D --> I[Executive HTML Report]
+    E --> I
+    F --> I
+    G --> I
+
+    H --> J[Management Review]
+    I --> J
+```
+
+---
+
 ## Repository Layout
 
 ```text
@@ -148,7 +215,7 @@ ansible-managed-dc-baseline/
 
 ---
 
-## Quick Start - Clone and Run the Demo
+## Quick Start
 
 ### 1. Clone the repository
 
@@ -166,33 +233,50 @@ git clone https://github.com/ahmadsheikhi89/ansible-managed-dc-baseline.git
 cd ansible-managed-dc-baseline
 ```
 
-### 2. Install local prerequisites
+---
 
-Rocky Linux / RHEL / Fedora:
+### 2. Install prerequisites
+
+Rocky Linux, RHEL, Fedora:
 
 ```bash
-sudo dnf install -y ansible-core python3 python3-openpyxl git unzip jq
+sudo dnf install -y ansible-core
+sudo dnf install -y python3 python3-openpyxl
+sudo dnf install -y git unzip jq
 ```
 
-Ubuntu / Debian:
+Ubuntu, Debian:
 
 ```bash
 sudo apt update
-sudo apt install -y ansible python3 python3-openpyxl git unzip jq
+sudo apt install -y ansible
+sudo apt install -y python3 python3-openpyxl
+sudo apt install -y git unzip jq
 ```
 
-Air-gapped environments should install these packages from an approved internal repository or offline package mirror.
+Air-gapped environments should install packages from an approved internal repository or offline package mirror.
 
-### 3. Validate tools
+---
+
+### 3. Validate local tools
 
 ```bash
 ansible --version
 python3 --version
-python3 -c "import openpyxl; print(openpyxl.__version__)"
 git --version
 ```
 
-### 4. Validate the synthetic inventory
+Validate Python Excel support:
+
+```bash
+python3 -c "import openpyxl; print(openpyxl.__version__)"
+```
+
+---
+
+## Run the Synthetic Demo
+
+### 1. Validate inventory graph
 
 ```bash
 ansible-inventory \
@@ -202,7 +286,7 @@ ansible-inventory \
   --graph
 ```
 
-List inventory as JSON:
+### 2. Validate inventory as JSON
 
 ```bash
 ansible-inventory \
@@ -212,38 +296,82 @@ ansible-inventory \
   --list
 ```
 
-### 5. Validate playbook syntax
+### 3. Validate one playbook syntax
 
 ```bash
-for playbook in playbooks/*.yml; do
-  echo "Checking $playbook"
-  ansible-playbook \
-    -i inventory/hosts.yml \
-    -i inventory/90-active-groups.yml \
-    -i inventory/91-managed-os-scope.yml \
-    "$playbook" \
-    --syntax-check
-done
+ansible-playbook \
+  -i inventory/hosts.yml \
+  -i inventory/90-active-groups.yml \
+  -i inventory/91-managed-os-scope.yml \
+  playbooks/20-fleet-readonly-report.yml \
+  --syntax-check
+```
+
+### 4. List target hosts before running
+
+```bash
+ansible-playbook \
+  -i inventory/hosts.yml \
+  -i inventory/90-active-groups.yml \
+  -i inventory/91-managed-os-scope.yml \
+  playbooks/20-fleet-readonly-report.yml \
+  --list-hosts
+```
+
+### 5. Run a read-only demo playbook
+
+```bash
+ansible-playbook \
+  -i inventory/hosts.yml \
+  -i inventory/90-active-groups.yml \
+  -i inventory/91-managed-os-scope.yml \
+  playbooks/20-fleet-readonly-report.yml
 ```
 
 ---
 
-## Demo Mode
+## Generate Reports
 
-The repository includes synthetic inventory and synthetic reports. Use demo mode when you want to understand the structure without touching real hosts.
-
-Generate the demo reports:
+### Generate demo data
 
 ```bash
 python3 scripts/generate-demo-data.py
-python3 scripts/build-final-manager-excel.py
-python3 scripts/build-final-manager-report.py
 ```
 
-Generated outputs:
+### Generate CTO Excel workbook
+
+```bash
+python3 scripts/build-final-manager-excel.py
+```
+
+Output:
 
 ```text
 reports/final/managed-dc-baseline-cto.xlsx
+```
+
+Workbook sheets:
+
+```text
+00_Dashboard
+01_Final_Baseline
+02_Yes_No_Matrix
+03_CIS_Lynis
+04_Exceptions
+05_Firewall_Evidence
+06_Repo_Cleanup
+07_Control_Checklist
+```
+
+### Generate executive HTML report
+
+```bash
+python3 scripts/build-final-manager-report.py
+```
+
+Outputs:
+
+```text
 docs/executive/managed-dc-baseline-report.html
 docs/executive/managed-dc-baseline-report.md
 docs/executive/charts/*.svg
@@ -251,42 +379,69 @@ docs/executive/charts/*.svg
 
 ---
 
-## Use With Your Own Real Inventory
+## Use This Repository With Your Own Inventory
 
-This repository is designed so teams can clone it, keep the structure, and replace the synthetic data with their own approved internal inventory.
+This repository is designed so teams can clone it, keep the structure, and replace synthetic data with their own approved internal inventory.
 
 > Do not commit real infrastructure data to a public fork.
 > Use a private internal Git repository before adding real IP addresses, domains, hostnames, usernames, reports, or evidence.
 
-### 1. Create an internal private copy
+---
+
+### 1. Create a private internal copy
+
+Clone the public demo:
 
 ```bash
 git clone git@github.com:ahmadsheikhi89/ansible-managed-dc-baseline.git
 cd ansible-managed-dc-baseline
 ```
 
-Then change the remote to your internal Git server:
+Remove the public GitHub remote:
 
 ```bash
 git remote remove origin
+```
+
+Add your internal Git remote:
+
+```bash
 git remote add origin git@git.example.internal:platform/ansible-managed-dc-baseline.git
+```
+
+Push to your private internal repository:
+
+```bash
 git push -u origin main
 ```
 
-### 2. Back up the synthetic inventory
+---
+
+### 2. Back up synthetic demo files
 
 ```bash
 mkdir -p archive/bootstrap
+```
+
+```bash
 cp -a inventory archive/bootstrap/inventory-synthetic-demo
+```
+
+```bash
 cp -a group_vars archive/bootstrap/group-vars-synthetic-demo
+```
+
+```bash
 cp -a reports archive/bootstrap/reports-synthetic-demo
 ```
 
+---
+
 ### 3. Replace `inventory/hosts.yml`
 
-Use this file for real managed hosts, IP addresses, SSH variables, and host-level metadata.
+Use this file for real host definitions, IP addresses, SSH variables, and host-level metadata.
 
-Example structure:
+Example:
 
 ```yaml
 ---
@@ -295,6 +450,8 @@ all:
     web-prd-01:
       ansible_host: 10.10.20.11
       ansible_user: ansible
+      ansible_port: 22
+      ansible_become: true
       service_name: web-prd-01
       service_role: production_web_frontend
       environment: production
@@ -303,6 +460,8 @@ all:
     api-gw-in-01:
       ansible_host: 10.10.20.21
       ansible_user: ansible
+      ansible_port: 22
+      ansible_become: true
       service_name: api-gw-in-01
       service_role: inbound_api_gateway
       environment: production
@@ -322,11 +481,13 @@ environment: production
 os_family_expected: rocky
 ```
 
+---
+
 ### 4. Replace `inventory/90-active-groups.yml`
 
-Use this file for service-group membership.
+Use this file to map hosts to service groups.
 
-Recommended service-group model:
+Example:
 
 ```yaml
 ---
@@ -400,6 +561,8 @@ all:
         log-01:
 ```
 
+---
+
 ### 5. Replace `inventory/91-managed-os-scope.yml`
 
 Use this file to separate standard managed operating systems from approved exceptions.
@@ -428,9 +591,11 @@ all:
         log-01:
 ```
 
+---
+
 ### 6. Replace `group_vars/all/main.yml`
 
-Use this file for internal baseline policy values.
+Use this file for baseline policy values.
 
 Example:
 
@@ -439,6 +604,7 @@ Example:
 company_name: "Example Internal Company"
 business_unit: "Digital Infrastructure Engineering"
 environment_name: "production"
+
 internal_domain: "example.internal"
 internal_registry: "registry.example.internal"
 internal_git: "git.example.internal"
@@ -450,29 +616,6 @@ baseline_execution_mode: "read_only"
 ```
 
 Do not store secrets in `group_vars`.
-
-### 7. Keep secrets outside Git
-
-Do not commit:
-
-```text
-SSH private keys
-Passwords
-Tokens
-API keys
-Vault passwords
-Production evidence with sensitive values
-Raw security findings
-Customer data
-```
-
-Recommended local-only secret files:
-
-```text
-~/.ssh/id_ed25519
-~/.ansible/vault_pass
-.env.local
-```
 
 ---
 
@@ -488,7 +631,7 @@ ansible-inventory \
   --graph
 ```
 
-### 2. Confirm target selection before running
+### 2. Confirm playbook target selection
 
 ```bash
 ansible-playbook \
@@ -510,7 +653,7 @@ ansible all \
   --limit web-prd-01
 ```
 
-### 4. Test one service group first
+### 4. Test one service group
 
 ```bash
 ansible web_services \
@@ -520,7 +663,7 @@ ansible web_services \
   -m ping
 ```
 
-### 5. Run read-only reports with a host limit first
+### 5. Run one read-only playbook against one host
 
 ```bash
 ansible-playbook \
@@ -531,7 +674,7 @@ ansible-playbook \
   --limit web-prd-01
 ```
 
-### 6. Run the full read-only baseline
+### 6. Run the final read-only baseline
 
 ```bash
 ansible-playbook \
@@ -543,88 +686,121 @@ ansible-playbook \
 
 ---
 
-## Read-only Audit Playbooks
+## Read-Only Audit Playbooks
 
-Common read-only audit flow:
+Run playbooks one by one.
+
+Classify operating systems:
 
 ```bash
 ansible-playbook playbooks/19-classify-os.yml
-ansible-playbook playbooks/20-fleet-readonly-report.yml
-ansible-playbook playbooks/22-audit-dnf-repos.yml
-ansible-playbook playbooks/24-audit-ubuntu-apt-no-update.yml
-ansible-playbook playbooks/57-audit-rocky-epel-basic.yml
-ansible-playbook playbooks/59-audit-lynis-availability.yml
-ansible-playbook playbooks/61-run-lynis-rocky-report.yml
-ansible-playbook playbooks/67-cis-preflight-basic-readonly-report.yml
-ansible-playbook playbooks/69-audit-external-repo-refs-readonly.yml
-ansible-playbook playbooks/71-audit-time-sync-readonly.yml
-ansible-playbook playbooks/72-audit-chrony-selected-source-readonly.yml
-ansible-playbook playbooks/73-audit-gitlab-firewalld-readonly.yml
-ansible-playbook playbooks/99-final-managed-dc-baseline-readonly.yml
 ```
 
-For real environments, start with:
+Generate fleet report:
 
 ```bash
-ansible-playbook playbooks/99-final-managed-dc-baseline-readonly.yml --list-hosts
-ansible-playbook playbooks/99-final-managed-dc-baseline-readonly.yml --syntax-check
-ansible-playbook playbooks/99-final-managed-dc-baseline-readonly.yml --limit web-prd-01
+ansible-playbook playbooks/20-fleet-readonly-report.yml
+```
+
+Audit DNF repositories:
+
+```bash
+ansible-playbook playbooks/22-audit-dnf-repos.yml
+```
+
+Audit Ubuntu APT configuration without update:
+
+```bash
+ansible-playbook playbooks/24-audit-ubuntu-apt-no-update.yml
+```
+
+Audit Rocky EPEL state:
+
+```bash
+ansible-playbook playbooks/57-audit-rocky-epel-basic.yml
+```
+
+Audit Lynis availability:
+
+```bash
+ansible-playbook playbooks/59-audit-lynis-availability.yml
+```
+
+Run Lynis summary report for Rocky hosts:
+
+```bash
+ansible-playbook playbooks/61-run-lynis-rocky-report.yml
+```
+
+Run CIS preflight read-only report:
+
+```bash
+ansible-playbook playbooks/67-cis-preflight-basic-readonly-report.yml
+```
+
+Audit external repository references:
+
+```bash
+ansible-playbook playbooks/69-audit-external-repo-refs-readonly.yml
+```
+
+Audit time synchronization:
+
+```bash
+ansible-playbook playbooks/71-audit-time-sync-readonly.yml
+```
+
+Audit selected chrony source:
+
+```bash
+ansible-playbook playbooks/72-audit-chrony-selected-source-readonly.yml
+```
+
+Audit firewalld exceptions:
+
+```bash
+ansible-playbook playbooks/73-audit-gitlab-firewalld-readonly.yml
+```
+
+Run final managed datacenter baseline report:
+
+```bash
+ansible-playbook playbooks/99-final-managed-dc-baseline-readonly.yml
 ```
 
 ---
 
-## Reports
+## Safe Production Practice
 
-### Final baseline CSV
-
-```text
-reports/final/99-managed-dc-baseline-readonly.csv
-```
-
-### CTO Excel workbook
+Before running any playbook in a real environment, validate the target list:
 
 ```bash
-python3 scripts/build-final-manager-excel.py
+ansible-playbook playbooks/99-final-managed-dc-baseline-readonly.yml --list-hosts
 ```
 
-Output:
-
-```text
-reports/final/managed-dc-baseline-cto.xlsx
-```
-
-Workbook sheets:
-
-```text
-00_Dashboard
-01_Final_Baseline
-02_Yes_No_Matrix
-03_CIS_Lynis
-04_Exceptions
-05_Firewall_Evidence
-06_Repo_Cleanup
-07_Control_Checklist
-```
-
-### Executive HTML report
+Validate syntax:
 
 ```bash
-python3 scripts/build-final-manager-report.py
+ansible-playbook playbooks/99-final-managed-dc-baseline-readonly.yml --syntax-check
 ```
 
-Outputs:
+Run against one host first:
 
-```text
-docs/executive/managed-dc-baseline-report.html
-docs/executive/managed-dc-baseline-report.md
-docs/executive/charts/*.svg
+```bash
+ansible-playbook playbooks/99-final-managed-dc-baseline-readonly.yml --limit web-prd-01
+```
+
+For any playbook that may change state, test with check mode and diff:
+
+```bash
+ansible-playbook playbooks/example.yml --check --diff
 ```
 
 ---
 
 ## Operational Exceptions
 
-This repo demonstrates exception tracking instead of hiding non-standard systems.
+This repository demonstrates exception tracking instead of hiding non-standard systems.
 
 Example exception groups:
 
@@ -633,19 +809,13 @@ firewalld_operational_exception
 ubuntu_operational_exception
 ```
 
-Example exception CSV:
+Example exception report:
 
 ```text
 reports/exceptions/74-firewalld-operational-exceptions.csv
 ```
 
-Exception workflow:
-
-```bash
-grep -E 'gitlab|runner|legacy' reports/exceptions/74-firewalld-operational-exceptions.csv
-```
-
-Expected policy:
+Policy expectation:
 
 ```text
 Exceptions must be documented, approved, time-bound, and visible in executive reporting.
@@ -653,9 +823,43 @@ Exceptions must be documented, approved, time-bound, and visible in executive re
 
 ---
 
+## Reports
+
+Final baseline CSV:
+
+```text
+reports/final/99-managed-dc-baseline-readonly.csv
+```
+
+CTO Excel workbook:
+
+```text
+reports/final/managed-dc-baseline-cto.xlsx
+```
+
+Executive HTML report:
+
+```text
+docs/executive/managed-dc-baseline-report.html
+```
+
+Executive Markdown report:
+
+```text
+docs/executive/managed-dc-baseline-report.md
+```
+
+Chart files:
+
+```text
+docs/executive/charts/
+```
+
+---
+
 ## Mermaid Diagrams
 
-GitHub-compatible Mermaid diagrams are stored under:
+GitHub-compatible Mermaid diagrams are available in this README and under:
 
 ```text
 docs/diagrams/
@@ -664,24 +868,24 @@ docs/diagrams/
 Validate Mermaid blocks:
 
 ````bash
-grep -RIn '^```mermaid$' docs/diagrams/*.md
-grep -RInE 'xychart-beta|themeVariables|%%\{init' docs/diagrams/*.md && exit 1 || echo "Mermaid syntax policy check passed"
+grep -RIn '^```mermaid$' README.md docs/diagrams/*.md
 ````
 
-PlantUML fallback files:
-
-```text
-docs/diagrams/plantuml-fallback/
-```
+Avoid advanced Mermaid syntax that may not render consistently on GitHub.
 
 ---
 
 ## Safe Evidence Archiving
 
-Create a dated evidence archive:
+Create a dated archive:
 
 ```bash
 mkdir -p archive/$(date +%Y%m%d)
+```
+
+Copy reports into the archive:
+
+```bash
 cp -a reports archive/$(date +%Y%m%d)/reports-snapshot
 ```
 
@@ -701,42 +905,73 @@ Internal ticket exports
 
 ## Git Workflow for Internal Teams
 
-Recommended internal workflow:
+Create a working branch:
 
 ```bash
 git checkout -b feature/update-real-inventory
+```
+
+Check changes:
+
+```bash
 git status
+```
+
+Stage inventory and policy files:
+
+```bash
 git add inventory group_vars
+```
+
+Commit changes:
+
+```bash
 git commit -m "Add internal production inventory baseline"
+```
+
+Push branch:
+
+```bash
 git push origin feature/update-real-inventory
 ```
 
 Merge only after peer review.
 
-For public forks:
+---
+
+## Public Fork Rules
+
+Do not push these items to a public repository:
 
 ```text
-Do not push real inventory.
-Do not push real reports.
-Do not push sensitive evidence.
-Do not push credentials.
+Real inventory
+Real IP addresses
+Real domains
+Real hostnames
+Real reports
+Security findings
+Customer data
+Credentials
+Tokens
+Private keys
+Vault passwords
 ```
 
 ---
 
 ## Troubleshooting
 
-| Problem                    | Check                                               |                  |
-| -------------------------- | --------------------------------------------------- | ---------------- |
-| Inventory does not load    | `ansible-inventory --graph -vvv`                    |                  |
-| Host not matched by group  | `ansible-inventory --graph                          | grep <hostname>` |
-| SSH fails                  | `ssh -vvv <user>@<host>`                            |                  |
-| Ansible ping fails         | `ansible all -m ping --limit <host>`                |                  |
-| Privilege escalation fails | Check `ansible_become`, sudo policy, and SSH user   |                  |
-| Excel script fails         | Install `python3-openpyxl`                          |                  |
-| HTML charts missing        | Run `python3 scripts/build-final-manager-report.py` |                  |
-| Mermaid does not render    | Use only diagrams under `docs/diagrams/*.md`        |                  |
-| GitHub SSH fails           | `ssh -T git@github.com`                             |                  |
+| Problem                    | Check                                               |
+| -------------------------- | --------------------------------------------------- |
+| Inventory does not load    | `ansible-inventory --graph -vvv`                    |
+| Host not matched by group  | `ansible-inventory --graph`                         |
+| SSH fails                  | `ssh -vvv user@host`                                |
+| Ansible ping fails         | `ansible all -m ping --limit host`                  |
+| Privilege escalation fails | Check `ansible_become`, sudo policy, and SSH user   |
+| Excel script fails         | Install `python3-openpyxl`                          |
+| HTML charts missing        | Run `python3 scripts/build-final-manager-report.py` |
+| Mermaid does not render    | Keep Mermaid syntax simple and GitHub-compatible    |
+| GitHub SSH fails           | `ssh -T git@github.com`                             |
 
 ---
 
@@ -752,7 +987,7 @@ Yes. Clone the repository into a private internal Git server, then replace the s
 
 ### Does this modify hosts?
 
-The baseline audit flow is designed around read-only evidence collection. Any playbook that may change state should be reviewed separately and tested with `--check --diff` before use.
+The baseline workflow is designed around read-only evidence collection. Any playbook that may change state should be reviewed separately and tested with `--check --diff`.
 
 ### Why include Ubuntu exception hosts?
 
@@ -768,8 +1003,9 @@ No. Keep real hostnames, IP addresses, domains, and reports inside private inter
 
 * Keep all sample data synthetic
 * Keep comments and code in English
-* Do not commit secrets or production output
-* Keep diagrams GitHub-compatible
+* Do not commit secrets
+* Do not commit production output
+* Keep Mermaid diagrams GitHub-compatible
 * Keep reports deterministic
 * Prefer read-only evidence collection first
 * Keep service groups clear and reusable
@@ -782,7 +1018,7 @@ No. Keep real hostnames, IP addresses, domains, and reports inside private inter
 * Add CI validation for YAML and Markdown
 * Add Ansible syntax-check workflow
 * Add optional Molecule tests
-* Add AWX/Tower job template examples
+* Add AWX or Tower job template examples
 * Add signed release checklist
 * Add optional Grafana dashboard import examples
 * Add internal adoption checklist template
