@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+title Control Validation Flow
+[*] --> InventoryLoaded
+InventoryLoaded --> OSClassified
+OSClassified --> HostsFileChecked
+HostsFileChecked --> RepoRefsChecked
+RepoRefsChecked --> TimeSyncChecked
+TimeSyncChecked --> RuntimeChecked
+RuntimeChecked --> SecurityControlsChecked
+SecurityControlsChecked --> ExceptionsDocumented
+ExceptionsDocumented --> FinalBaselineOK
+FinalBaselineOK --> [*]
+@enduml

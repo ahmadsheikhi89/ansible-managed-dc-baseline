@@ -1,0 +1,31 @@
+---
+- name: Bootstrap SSH authorized key for managed baseline account
+  hosts: all
+  gather_facts: true
+  become: true
+  serial: 1
+  vars:
+    baseline_user: ansible_ops
+    baseline_public_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFictionalPublicKeyForTrainingOnly atlasforge-demo"
+  tasks:
+    - name: Ensure baseline automation user exists
+      ansible.builtin.user:
+        name: "{{ baseline_user }}"
+        shell: /bin/bash
+        create_home: true
+
+    - name: Install demonstration public key
+      ansible.builtin.authorized_key:
+        user: "{{ baseline_user }}"
+        key: "{{ baseline_public_key }}"
+        state: present
+
+    - name: Allow passwordless sudo for demonstration user
+      ansible.builtin.copy:
+        dest: "/etc/sudoers.d/90-{{ baseline_user }}"
+        owner: root
+        group: root
+        mode: '0440'
+        content: "{{ baseline_user }} ALL=(ALL) NOPASSWD: ALL
+"
+        validate: /usr/sbin/visudo -cf %s

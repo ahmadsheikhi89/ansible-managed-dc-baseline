@@ -1,0 +1,3 @@
+inventory_hostname|ansible_host|service_name|exception_type|owner_team|risk_level|approval_status|reason|review_cycle|notes
+af-gitlab-01|10.44.30.11|gitlab-server|FIREWALLD_DOCKER_DESIGN|Digital Infrastructure Engineering|Medium|Accepted for demo baseline|Docker-based GitLab and GitLab Runner require SOC-approved Docker/firewalld design before enabling host firewalld.|Quarterly|Synthetic public-safe exception record
+af-gitlab-runner-01|10.44.30.12|gitlab-runner|FIREWALLD_DOCKER_DESIGN|Digital Infrastructure Engineering|Medium|Accepted for demo baseline|Docker-based GitLab and GitLab Runner require SOC-approved Docker/firewalld design before enabling host firewalld.|Quarterly|Synthetic public-safe exception record

@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+title Managed DC Baseline Overview
+rectangle "Ansible Managed DC Baseline" as A
+rectangle "22 Managed Hosts" as B
+rectangle "19 Rocky Linux Hosts" as C
+rectangle "3 Ubuntu Exception Hosts" as D
+rectangle "Read-only Control Evidence" as E
+rectangle "CTO Deliverables" as L
+A --> B
+B --> C
+B --> D
+A --> E
+A --> L
+E --> "Hosts File Validation"
+E --> "Repository Hygiene"
+E --> "Chrony/NTP Sync"
+E --> "Docker Runtime"
+E --> "SELinux on Rocky"
+E --> "Firewall Control"
+L --> "Excel Workbook"
+L --> "HTML Report"
+L --> "Markdown Diagrams"
+@enduml

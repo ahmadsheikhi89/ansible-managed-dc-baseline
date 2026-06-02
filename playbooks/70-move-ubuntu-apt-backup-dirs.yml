@@ -1,0 +1,25 @@
+---
+- name: Move legacy Ubuntu APT backup directories after review
+  hosts: ubuntu_exception
+  gather_facts: true
+  become: true
+  serial: 1
+  tasks:
+    - name: Create reviewed backup archive directory
+      ansible.builtin.file:
+        path: /var/backups/atlasforge-apt-reviewed
+        state: directory
+        owner: root
+        group: root
+        mode: '0750'
+
+    - name: Find old APT backup directories
+      ansible.builtin.find:
+        paths: /etc/apt
+        file_type: directory
+        patterns: '*backup*'
+      register: apt_backup_dirs
+
+    - name: Display directories that would be moved
+      ansible.builtin.debug:
+        var: apt_backup_dirs.files | map(attribute='path') | list

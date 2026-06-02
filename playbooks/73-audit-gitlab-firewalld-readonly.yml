@@ -1,0 +1,39 @@
+---
+- name: Audit GitLab and GitLab Runner firewalld state
+  hosts: af-gitlab-01,af-gitlab-runner-01
+  gather_facts: true
+  become: true
+  serial: 1
+  vars:
+    report_file: "{{ playbook_dir }}/../reports/firewall/73-gitlab-firewalld-readonly-report.csv"
+  pre_tasks:
+    - name: Create firewall report header
+      ansible.builtin.copy:
+        dest: "{{ report_file }}"
+        content: "inventory_hostname|ansible_host|service_name|firewalld|docker|control_status|notes
+"
+        mode: '0644'
+      delegate_to: localhost
+      run_once: true
+      become: false
+  tasks:
+    - name: Check firewalld state
+      ansible.builtin.command: systemctl is-active firewalld
+      changed_when: false
+      failed_when: false
+      register: firewalld_state
+
+    - name: Check Docker state
+      ansible.builtin.command: systemctl is-active docker
+      changed_when: false
+      failed_when: false
+      register: docker_state
+
+    - name: Append firewall exception evidence
+      ansible.builtin.lineinfile:
+        path: "{{ report_file }}"
+        line: "{{ inventory_hostname }}|{{ ansible_host | default('unknown') }}|{{ service_name | default('unknown') }}|{{ firewalld_state.stdout | default('unknown') }}|{{ docker_state.stdout | default('unknown') }}|ACCEPTED_EXCEPTION|Docker-based GitLab component requires SOC-approved Docker/firewalld design"
+        insertafter: EOF
+      delegate_to: localhost
+      become: false
+      changed_when: false

@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Ansible
+*.retry
+.ansible/
+
+# Generated local evidence
+archive/*
+!archive/.gitkeep
+*.tmp
+*.log
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Secrets must never be committed
+*.key
+*.pem
+*.p12
+*.pfx
+.env
+.env.*

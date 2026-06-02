@@ -1,0 +1,5 @@
+[atlasforge-epel]
+name=AtlasForge EPEL Mirror
+baseurl=https://nexus.atlasforge.example/repository/epel-9/
+enabled=1
+gpgcheck=0

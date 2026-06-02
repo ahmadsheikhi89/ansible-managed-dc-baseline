@@ -1,0 +1,20 @@
+inventory_hostname|ansible_host|service_name|real_hostname|os|version|hardening_index|tests_done|warnings|suggestions|status|notes
+af-api-gw-out-01|10.44.20.11|api-gateway-outbound|af-api-gw-out-01.atlasforge.example|Rocky|9.4|82|248|1|26|OK|Synthetic Lynis/CIS-like evidence for training
+af-api-gw-out-02|10.44.20.12|api-gateway-outbound|af-api-gw-out-02.atlasforge.example|Rocky|9.4|81|249|1|25|OK|Synthetic Lynis/CIS-like evidence for training
+af-api-gw-out-03|10.44.20.13|api-gateway-outbound|af-api-gw-out-03.atlasforge.example|Rocky|9.4|83|250|0|23|OK|Synthetic Lynis/CIS-like evidence for training
+af-api-gw-in-01|10.44.20.21|api-gateway-inbound|af-api-gw-in-01.atlasforge.example|Rocky|9.4|80|251|2|29|OK|Synthetic Lynis/CIS-like evidence for training
+af-api-gw-in-02|10.44.20.22|api-gateway-inbound|af-api-gw-in-02.atlasforge.example|Rocky|9.4|84|252|0|22|OK|Synthetic Lynis/CIS-like evidence for training
+af-api-gw-in-03|10.44.20.23|api-gateway-inbound|af-api-gw-in-03.atlasforge.example|Rocky|9.4|82|253|1|24|OK|Synthetic Lynis/CIS-like evidence for training
+af-app-dev-01|10.44.20.31|application-dev|af-app-dev-01.atlasforge.example|Rocky|9.4|79|254|2|31|OK|Synthetic Lynis/CIS-like evidence for training
+af-app-stg-01|10.44.20.32|application-staging|af-app-stg-01.atlasforge.example|Rocky|9.4|80|255|2|30|OK|Synthetic Lynis/CIS-like evidence for training
+af-app-prd-01|10.44.20.33|application-production|af-app-prd-01.atlasforge.example|Rocky|9.4|82|256|1|27|OK|Synthetic Lynis/CIS-like evidence for training
+af-gitlab-01|10.44.30.11|gitlab-server|af-gitlab-01.atlasforge.example|Rocky|9.4|78|248|3|35|OK|Synthetic Lynis/CIS-like evidence for training
+af-gitlab-runner-01|10.44.30.12|gitlab-runner|af-gitlab-runner-01.atlasforge.example|Rocky|9.4|79|249|2|32|OK|Synthetic Lynis/CIS-like evidence for training
+af-nexus-01|10.44.30.13|artifact-repository|af-nexus-01.atlasforge.example|Rocky|9.4|83|250|1|24|OK|Synthetic Lynis/CIS-like evidence for training
+af-pwa-01|10.44.20.41|pwa-service|af-pwa-01.atlasforge.example|Rocky|9.4|81|251|1|26|OK|Synthetic Lynis/CIS-like evidence for training
+af-payment-dev-01|10.44.20.51|payment-dev|af-payment-dev-01.atlasforge.example|Rocky|9.4|80|252|2|30|OK|Synthetic Lynis/CIS-like evidence for training
+af-payment-stg-01|10.44.20.52|payment-staging|af-payment-stg-01.atlasforge.example|Rocky|9.4|82|253|1|27|OK|Synthetic Lynis/CIS-like evidence for training
+af-payment-prd-01|10.44.20.53|payment-production|af-payment-prd-01.atlasforge.example|Rocky|9.4|84|254|0|22|OK|Synthetic Lynis/CIS-like evidence for training
+af-services-01|10.44.20.62|shared-services|af-services-01.atlasforge.example|Rocky|9.4|79|255|2|31|OK|Synthetic Lynis/CIS-like evidence for training
+af-hub-01|10.44.30.31|container-registry|af-hub-01.atlasforge.example|Rocky|9.4|83|256|1|24|OK|Synthetic Lynis/CIS-like evidence for training
+af-api-common-01|10.44.20.71|api-common|af-api-common-01.atlasforge.example|Rocky|9.4|81|248|1|28|OK|Synthetic Lynis/CIS-like evidence for training

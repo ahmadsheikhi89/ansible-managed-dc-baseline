@@ -1,0 +1,23 @@
+inventory_hostname|ansible_host|os|package_manager|external_repo_refs|status|notes
+af-api-gw-out-01|10.44.20.11|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-api-gw-out-02|10.44.20.12|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-api-gw-out-03|10.44.20.13|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-api-gw-in-01|10.44.20.21|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-api-gw-in-02|10.44.20.22|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-api-gw-in-03|10.44.20.23|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-app-dev-01|10.44.20.31|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-app-stg-01|10.44.20.32|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-app-prd-01|10.44.20.33|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-gitlab-01|10.44.30.11|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-gitlab-runner-01|10.44.30.12|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-nexus-01|10.44.30.13|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-push-01|10.44.30.21|Ubuntu|apt|0|OK|Only AtlasForge internal repository references found
+af-pwa-01|10.44.20.41|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-payment-dev-01|10.44.20.51|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-payment-stg-01|10.44.20.52|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-payment-prd-01|10.44.20.53|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-vehicle-01|10.44.20.61|Ubuntu|apt|0|OK|Only AtlasForge internal repository references found
+af-services-01|10.44.20.62|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-sentry-01|10.44.40.11|Ubuntu|apt|0|OK|Only AtlasForge internal repository references found
+af-hub-01|10.44.30.31|Rocky|dnf|0|OK|Only AtlasForge internal repository references found
+af-api-common-01|10.44.20.71|Rocky|dnf|0|OK|Only AtlasForge internal repository references found

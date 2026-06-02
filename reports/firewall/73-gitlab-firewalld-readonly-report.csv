@@ -1,0 +1,3 @@
+inventory_hostname|ansible_host|service_name|docker|firewalld|required_action|control_status|notes
+af-gitlab-01|10.44.30.11|gitlab-server|active|inactive|Design SOC-approved Docker/firewalld policy|ACCEPTED_EXCEPTION|Synthetic GitLab firewalld evidence
+af-gitlab-runner-01|10.44.30.12|gitlab-runner|active|inactive|Design SOC-approved Docker/firewalld policy|ACCEPTED_EXCEPTION|Synthetic Runner firewalld evidence
