@@ -1,4 +1,7 @@
 # Ansible Managed Datacenter Baseline
+<p align="center">
+  <img src="./banner.png" alt="AtlasForge Bank - Managed Datacenter Baseline Dashboard" width="100%">
+</p>
 
 Production-style public demo repository for **Ansible Managed Datacenter Baseline Automation**.
 
