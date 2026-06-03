@@ -5,7 +5,23 @@
 </p>
 
 <p align="center">
-  <strong>Service-based Ansible baseline automation for synthetic on-prem datacenter audit, evidence collection, and executive reporting.</strong>
+  <img src="https://img.shields.io/badge/Ansible-Automation-EE0000?style=for-the-badge&logo=ansible&logoColor=white" alt="Ansible">
+  <img src="https://img.shields.io/badge/Python-Reporting-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Rocky%20Linux-Managed%20Hosts-10B981?style=for-the-badge&logo=rockylinux&logoColor=white" alt="Rocky Linux">
+  <img src="https://img.shields.io/badge/Ubuntu-Exception%20Hosts-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Reports-Excel%20%2F%20HTML-2563EB?style=for-the-badge" alt="Excel and HTML Reports">
+  <img src="https://img.shields.io/badge/Mermaid-Diagrams-7C3AED?style=for-the-badge&logo=mermaid&logoColor=white" alt="Mermaid Diagrams">
+  <img src="https://img.shields.io/badge/Mode-Read--Only%20Audit-0F172A?style=for-the-badge" alt="Read Only Audit">
+  <img src="https://img.shields.io/badge/Data-Synthetic%20Public--Safe-16A34A?style=for-the-badge" alt="Synthetic Public Safe">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Environment-On--Prem%20%2F%20Air--Gapped-334155?style=for-the-badge" alt="On-Prem Air-Gapped">
+  <img src="https://img.shields.io/badge/Inventory-Service--Based-F59E0B?style=for-the-badge" alt="Service Based Inventory">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
 </p>
 
 Production-style public demo repository for **Ansible Managed Datacenter Baseline Automation**.
